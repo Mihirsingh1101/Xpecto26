@@ -49,3 +49,336 @@ html, body {
   background: #333;
   border-radius: 10px;
 }
+
+/* Custom Saturn Cursor */
+* {
+  cursor: none !important;
+}
+
+.custom-cursor {
+  position: fixed;
+  width: 100px;
+  height: 100px;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.15s ease-out;
+}
+
+.custom-cursor .saturn-planet {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(circle at 30% 30%, rgba(253, 180, 75, 0.65), rgba(212, 165, 116, 0.65), rgba(139, 111, 71, 0.65));
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  box-shadow: 
+    0 0 40px rgba(253, 180, 75, 0.8),
+    0 0 80px rgba(253, 180, 75, 0.6),
+    0 0 120px rgba(253, 180, 75, 0.4),
+    0 0 160px rgba(253, 180, 75, 0.2);
+  transition: width 0.2s, height 0.2s;
+}
+
+.custom-cursor::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+  filter: blur(40px);
+  z-index: -1;
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { 
+    opacity: 0.8;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% { 
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.3);
+  }
+}
+
+.custom-cursor .saturn-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 3px solid rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  pointer-events: none;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+}
+
+.custom-cursor .saturn-ring-1 {
+  width: 66px;
+  height: 20px;
+  animation: rotate-ring-1 3s linear infinite;
+  opacity: 0.7;
+}
+
+.custom-cursor .saturn-ring-2 {
+  width: 80px;
+  height: 26px;
+  animation: rotate-ring-2 4s linear infinite;
+  opacity: 0.6;
+}
+
+.custom-cursor .saturn-ring-3 {
+  width: 94px;
+  height: 34px;
+  animation: rotate-ring-3 5s linear infinite;
+  opacity: 0.5;
+}
+
+@keyframes rotate-ring-1 {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes rotate-ring-2 {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(-360deg); }
+}
+
+@keyframes rotate-ring-3 {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.custom-cursor.hover {
+  transform: translate(-50%, -50%) scale(1.5);
+}
+
+.custom-cursor.hover .saturn-planet {
+  width: 60px;
+  height: 60px;
+  box-shadow: 
+    0 0 50px rgba(253, 180, 75, 1),
+    0 0 100px rgba(253, 180, 75, 0.8),
+    0 0 150px rgba(253, 180, 75, 0.6),
+    0 0 200px rgba(253, 180, 75, 0.4);
+}
+
+/* Sparkle Trail */
+.sparkle-trail {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  animation: sparkle-fade 0.8s ease-out forwards;
+}
+
+@keyframes sparkle-fade {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.3);
+  }
+}
+
+/* Color Variants for Different Pages */
+
+/* Home - Purple */
+.custom-cursor.cursor-purple::after {
+  background: radial-gradient(circle, rgba(138, 43, 226, 0.3) 0%, transparent 70%);
+}
+
+.custom-cursor.cursor-purple .saturn-planet {
+  background: radial-gradient(circle at 30% 30%, rgba(138, 43, 226, 0.65), rgba(75, 0, 130, 0.65), rgba(49, 27, 146, 0.65));
+  border: 2px solid rgba(138, 43, 226, 0.6);
+  box-shadow: 
+    0 0 40px rgba(138, 43, 226, 0.8),
+    0 0 80px rgba(138, 43, 226, 0.6),
+    0 0 120px rgba(138, 43, 226, 0.4),
+    0 0 160px rgba(138, 43, 226, 0.2);
+}
+
+.custom-cursor.cursor-purple.hover .saturn-planet {
+  box-shadow: 
+    0 0 50px rgba(138, 43, 226, 1),
+    0 0 100px rgba(138, 43, 226, 0.8),
+    0 0 150px rgba(138, 43, 226, 0.6),
+    0 0 200px rgba(138, 43, 226, 0.4);
+}
+
+.custom-cursor.cursor-purple .saturn-ring {
+  border-color: rgba(138, 43, 226, 0.6);
+  box-shadow: 0 0 10px rgba(138, 43, 226, 0.4);
+}
+
+/* Exhibition - Orange */
+.custom-cursor.cursor-orange::after {
+  background: radial-gradient(circle, rgba(255, 159, 28, 0.3) 0%, transparent 70%);
+}
+
+.custom-cursor.cursor-orange .saturn-planet {
+  background: radial-gradient(circle at 30% 30%, rgba(255, 159, 28, 0.65), rgba(255, 165, 0, 0.65), rgba(255, 140, 0, 0.65));
+  border: 2px solid rgba(255, 159, 28, 0.6);
+  box-shadow: 
+    0 0 40px rgba(255, 159, 28, 0.8),
+    0 0 80px rgba(255, 159, 28, 0.6),
+    0 0 120px rgba(255, 159, 28, 0.4),
+    0 0 160px rgba(255, 159, 28, 0.2);
+}
+
+.custom-cursor.cursor-orange.hover .saturn-planet {
+  box-shadow: 
+    0 0 50px rgba(255, 159, 28, 1),
+    0 0 100px rgba(255, 159, 28, 0.8),
+    0 0 150px rgba(255, 159, 28, 0.6),
+    0 0 200px rgba(255, 159, 28, 0.4);
+}
+
+.custom-cursor.cursor-orange .saturn-ring {
+  border-color: rgba(255, 159, 28, 0.6);
+  box-shadow: 0 0 10px rgba(255, 159, 28, 0.4);
+}
+
+/* Events - Blue */
+.custom-cursor.cursor-blue::after {
+  background: radial-gradient(circle, rgba(67, 97, 238, 0.3) 0%, transparent 70%);
+}
+
+.custom-cursor.cursor-blue .saturn-planet {
+  background: radial-gradient(circle at 30% 30%, rgba(67, 97, 238, 0.65), rgba(0, 191, 255, 0.65), rgba(0, 119, 182, 0.65));
+  border: 2px solid rgba(67, 97, 238, 0.6);
+  box-shadow: 
+    0 0 40px rgba(67, 97, 238, 0.8),
+    0 0 80px rgba(67, 97, 238, 0.6),
+    0 0 120px rgba(67, 97, 238, 0.4),
+    0 0 160px rgba(67, 97, 238, 0.2);
+}
+
+.custom-cursor.cursor-blue.hover .saturn-planet {
+  box-shadow: 
+    0 0 50px rgba(67, 97, 238, 1),
+    0 0 100px rgba(67, 97, 238, 0.8),
+    0 0 150px rgba(67, 97, 238, 0.6),
+    0 0 200px rgba(67, 97, 238, 0.4);
+}
+
+.custom-cursor.cursor-blue .saturn-ring {
+  border-color: rgba(67, 97, 238, 0.6);
+  box-shadow: 0 0 10px rgba(67, 97, 238, 0.4);
+}
+
+/* Sessions - Green */
+.custom-cursor.cursor-green::after {
+  background: radial-gradient(circle, rgba(46, 196, 182, 0.3) 0%, transparent 70%);
+}
+
+.custom-cursor.cursor-green .saturn-planet {
+  background: radial-gradient(circle at 30% 30%, rgba(46, 196, 182, 0.65), rgba(16, 185, 129, 0.65), rgba(34, 197, 94, 0.65));
+  border: 2px solid rgba(46, 196, 182, 0.6);
+  box-shadow: 
+    0 0 40px rgba(46, 196, 182, 0.8),
+    0 0 80px rgba(46, 196, 182, 0.6),
+    0 0 120px rgba(46, 196, 182, 0.4),
+    0 0 160px rgba(46, 196, 182, 0.2);
+}
+
+.custom-cursor.cursor-green.hover .saturn-planet {
+  box-shadow: 
+    0 0 50px rgba(46, 196, 182, 1),
+    0 0 100px rgba(46, 196, 182, 0.8),
+    0 0 150px rgba(46, 196, 182, 0.6),
+    0 0 200px rgba(46, 196, 182, 0.4);
+}
+
+.custom-cursor.cursor-green .saturn-ring {
+  border-color: rgba(46, 196, 182, 0.6);
+  box-shadow: 0 0 10px rgba(46, 196, 182, 0.4);
+}
+
+/* Payment - Brown/Tan */
+.custom-cursor.cursor-brown::after {
+  background: radial-gradient(circle, rgba(212, 163, 115, 0.3) 0%, transparent 70%);
+}
+
+.custom-cursor.cursor-brown .saturn-planet {
+  background: radial-gradient(circle at 30% 30%, rgba(212, 163, 115, 0.65), rgba(184, 134, 98, 0.65), rgba(141, 141, 141, 0.65));
+  border: 2px solid rgba(212, 163, 115, 0.6);
+  box-shadow: 
+    0 0 40px rgba(212, 163, 115, 0.8),
+    0 0 80px rgba(212, 163, 115, 0.6),
+    0 0 120px rgba(212, 163, 115, 0.4),
+    0 0 160px rgba(212, 163, 115, 0.2);
+}
+
+.custom-cursor.cursor-brown.hover .saturn-planet {
+  box-shadow: 
+    0 0 50px rgba(212, 163, 115, 1),
+    0 0 100px rgba(212, 163, 115, 0.8),
+    0 0 150px rgba(212, 163, 115, 0.6),
+    0 0 200px rgba(212, 163, 115, 0.4);
+}
+
+.custom-cursor.cursor-brown .saturn-ring {
+  border-color: rgba(212, 163, 115, 0.6);
+  box-shadow: 0 0 10px rgba(212, 163, 115, 0.4);
+}
+
+
+/* ===== Disable custom cursor on touch devices (Android / iOS) ===== */
+@media (hover: none) and (pointer: coarse) {
+  * {
+    cursor: auto !important;
+  }
+
+  .custom-cursor,
+  .cursor,
+  .cursor-dot,
+  .cursor-outline,
+  .cursor-inner {
+    display: none !important;
+  }
+}
+
+/* @media (hover: none) and (pointer: coarse) {
+  a:active,
+  button:active {
+    transform: scale(0.96);
+    transition: transform 0.1s ease;
+  }
+} */
+
+/* ===== Absolute kill-switch for cursor artifacts on touch devices ===== */
+@media (hover: none) and (pointer: coarse) {
+
+  .custom-cursor,
+  .sparkle-trail,
+  .cursor,
+  .cursor-dot,
+  .cursor-outline,
+  .saturn-ring,
+  .saturn-planet {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
+
+  *::before,
+  *::after {
+    cursor: auto !important;
+  }
+}
+
+
+
