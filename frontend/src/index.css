@@ -1,28 +1,38 @@
+/* =========================
+   Tailwind v4 Core
+========================= */
 @import "tailwindcss";
 
-/* Add this import at the top */
-@import url('https://fonts.googleapis.com/css2?family=Michroma&family=Montserrat:wght@300;400;500;600;700;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&display=swap');
+/*
+========================= */
+@import "tw-animate-css";
 
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-html, body {
-  background-color: #000;
-  color: white;
-  font-family: 'Montserrat', sans-serif;
+/* =========================
+   Global Base Styles
+========================= */
+html,
+body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  font-family: "Montserrat", sans-serif;
 }
+
+/* =========================
+   Animations
+========================= */
 
 /* 3D Planet Rotation */
 @keyframes rotate-3d {
-  0% { transform: perspective(1000px) rotateY(0deg) rotateX(10deg); }
-  50% { transform: perspective(1000px) rotateY(180deg) rotateX(-10deg); }
-  100% { transform: perspective(1000px) rotateY(360deg) rotateX(10deg); }
+  0% {
+    transform: perspective(1000px) rotateY(0deg) rotateX(10deg);
+  }
+  50% {
+    transform: perspective(1000px) rotateY(180deg) rotateX(-10deg);
+  }
+  100% {
+    transform: perspective(1000px) rotateY(360deg) rotateX(10deg);
+  }
 }
 
 .animate-planet-3d {
@@ -30,22 +40,132 @@ html, body {
   transform-style: preserve-3d;
 }
 
-/* Utilities */
+@keyframes liquid {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-liquid {
+  animation: liquid 4s linear infinite;
+}
+
+.animate-spin-slow {
+  animation: spin 10s linear infinite;
+}
+
+/* =========================
+   Custom Utilities
+========================= */
 .text-glow {
   text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
 }
+
 .banner-text-stroke {
   -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
 }
 
-/* Hide scrollbar */
+/* =========================
+   Scrollbar
+========================= */
 ::-webkit-scrollbar {
   width: 8px;
 }
+
 ::-webkit-scrollbar-track {
   background: #02020a;
 }
+
 ::-webkit-scrollbar-thumb {
   background: #333;
   border-radius: 10px;
+}
+
+/* =========================
+   Theme Tokens (shadcn)
+========================= */
+/* @theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+} */
+
+/* =========================
+   Light Theme
+========================= */
+:root {
+  --radius: 0.625rem;
+
+  --background: 0.145 0 0;
+  --foreground: 0.985 0 0;
+
+  --card: 0.205 0 0;
+  --card-foreground: 0.985 0 0;
+
+  --popover: 0.205 0 0;
+  --popover-foreground: 0.985 0 0;
+
+  --primary: 0.922 0 0;
+  --primary-foreground: 0.205 0 0;
+
+  --secondary: 0.269 0 0;
+  --secondary-foreground: 0.985 0 0;
+
+  --muted: 0.269 0 0;
+  --muted-foreground: 0.708 0 0;
+
+  --accent: 0.269 0 0;
+  --accent-foreground: 0.985 0 0;
+
+  --destructive: 0.704 0.191 22.216;
+
+  --border: 1 0 0 / 10%;
+  --input: 1 0 0 / 15%;
+  --ring: 0.556 0 0;
+}
+
+/* =========================
+   Dark Theme
+========================= */
+.dark {
+  --background: 0.145 0 0;
+  --foreground: 0.985 0 0;
+}
+
+@layer base {
+  * {
+    border-color: oklch(var(--border));
+    outline-color: oklch(var(--ring) / 0.5);
+  }
+
+  body {
+    background-color: oklch(var(--background));
+    color: oklch(var(--foreground));
+  }
 }
